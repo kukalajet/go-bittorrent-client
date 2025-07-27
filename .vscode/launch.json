@@ -6,7 +6,96 @@
             "type": "go",
             "request": "launch",
             "mode": "auto",
-            "program": "${workspaceFolder}/cmd/client"
+            "program": "${workspaceFolder}/cmd/client",
+            "env": {},
+            "args": [],
+            "showLog": true
+        },
+        {
+            "name": "Launch Client with Arguments",
+            "type": "go",
+            "request": "launch",
+            "mode": "auto",
+            "program": "${workspaceFolder}/cmd/client",
+            "env": {},
+            "args": [
+                "${input:torrentFile}"
+            ],
+            "showLog": true
+        },
+        {
+            "name": "Test All",
+            "type": "go",
+            "request": "launch",
+            "mode": "test",
+            "program": "${workspaceFolder}",
+            "showLog": true
+        },
+        {
+            "name": "Test Bencode",
+            "type": "go",
+            "request": "launch",
+            "mode": "test",
+            "program": "${workspaceFolder}/internal/bencode",
+            "showLog": true
+        },
+        {
+            "name": "Test Bencode (Verbose)",
+            "type": "go",
+            "request": "launch",
+            "mode": "test",
+            "program": "${workspaceFolder}/internal/bencode",
+            "args": [
+                "-v"
+            ],
+            "showLog": true
+        },
+        {
+            "name": "Test Current Package",
+            "type": "go",
+            "request": "launch",
+            "mode": "test",
+            "program": "${fileDirname}",
+            "showLog": true
+        },
+        {
+            "name": "Debug Current Test",
+            "type": "go",
+            "request": "launch",
+            "mode": "test",
+            "program": "${fileDirname}",
+            "args": [
+                "-test.run",
+                "${input:testFunction}"
+            ],
+            "showLog": true
+        },
+        {
+            "name": "Attach to Process",
+            "type": "go",
+            "request": "attach",
+            "mode": "local",
+            "processId": "${input:processId}"
+        }
+    ],
+    "inputs": [
+        {
+            "id": "torrentFile",
+            "description": "Path to torrent file",
+            "default": "",
+            "type": "promptString"
+        },
+        {
+            "id": "testFunction",
+            "description": "Test function name to run",
+            "default": "",
+            "type": "promptString"
+        },
+        {
+            "id": "processId",
+            "description": "Process ID to attach to",
+            "default": "",
+            "type": "promptString"
         }
     ]
 }
